@@ -1,8 +1,8 @@
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
-    <div className="min-h-screen flex justify-center items-center text-green-700">
+    <div className="flex items-center justify-center min-h-screen text-green-700 hover:animate-spin">
       Welcome to learning material CMS
     </div>
   );
