@@ -1,11 +1,11 @@
-import './App.css';
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="min-h-screen flex justify-center items-center text-green-700">
-      Hello from Learn Materials CMS
+    <div className="flex items-center justify-center min-h-screen text-green-700 hover:animate-spin">
+      Welcome to learning material CMS
     </div>
   );
-}
+};
 
 export default App;
