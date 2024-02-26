@@ -1,10 +1,10 @@
 import { PageTemplate } from "src/templates/PageTemplate";
-import { Home } from "../Pages/Home";
+import { Login } from "../Pages/Login";
 
-export const HomeScreen = () => {
+export const LoginScreen = () => {
   return (
     <PageTemplate>
-      <Home />
+      <Login />
     </PageTemplate>
   )
 }
