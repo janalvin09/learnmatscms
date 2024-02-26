@@ -1,7 +1,7 @@
 
 export const PageTemplate = ({ children }) => {
   return (
-    <div>
+    <div className="bg-gray-200">
       {children}
     </div>
   )
