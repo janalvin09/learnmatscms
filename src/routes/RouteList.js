@@ -1,26 +1,29 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
-
+import { Routes, Route, useLocation } from "react-router-dom";
 
 // SCREEN
-import { LoginScreen } from 'src/components/Screens/LoginScreen'
-import { DashboardScreen } from 'src/components/Screens/DashboardScreen'
-import { ClassLevelScreen } from 'src/components/Screens/ClassLevelScreen'
-import { MaterialScreen } from 'src/components/Screens/MaterialScreen'
-import { QuestionScreen } from 'src/components/Screens/QuestionScreen'
-import { AnswerScreen } from 'src/components/Screens/AnswerScreen'
-import { ResultScreen } from 'src/components/Screens/ResultScreen'
-import { LanguageScreen } from 'src/components/Screens/LanguageScreen'
-import { TranslationScreen } from 'src/components/Screens/TranslationScreen'
+import { LoginScreen } from "src/components/Screens/LoginScreen";
+import { DashboardScreen } from "src/components/Screens/DashboardScreen";
+import { ClassLevelScreen } from "src/components/Screens/ClassLevelScreen";
+import { MaterialScreen } from "src/components/Screens/MaterialScreen";
+import { QuestionScreen } from "src/components/Screens/QuestionScreen";
+import { AnswerScreen } from "src/components/Screens/AnswerScreen";
+import { ResultScreen } from "src/components/Screens/ResultScreen";
+import { LanguageScreen } from "src/components/Screens/LanguageScreen";
+import { TranslationScreen } from "src/components/Screens/TranslationScreen";
 
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
+// const routeMaps = [
+//   { path: "/", element: <HomeScreen /> },
+//   { path: "/home", element: <HomeScreen /> },
+// ];
 
-export  const RouteList = () => {
-  const location = useLocation()
-  
+export const RouteList = () => {
+  const location = useLocation();
+
   useEffect(() => {
-    console.log(location)
-  }, [location])
+    console.log(location);
+  }, [location]);
 
   return (
     <Routes location={location} key={location.pathname}>
@@ -34,8 +37,6 @@ export  const RouteList = () => {
       <Route path="/dashboard/result" element={<ResultScreen />} />
       <Route path="/dashboard/language" element={<LanguageScreen />} />
       <Route path="/dashboard/translation" element={<TranslationScreen />} />
-
     </Routes>
-  )
-
-}
+  );
+};
