@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
 
 export const ClassLevel = () => {
+
   return (
-    <div className='classlevel_main w-full flex justify-center items-center'>
-      welcome from classlevel screen
+    <div className="flex items-center justify-center w-full classlevel_main">
+      Hello from class level screen
     </div>
-  )
-}
+  );
+};

@@ -13,10 +13,58 @@ import { TranslationScreen } from "src/components/Screens/TranslationScreen";
 
 import { useEffect } from "react";
 
-// const routeMaps = [
-//   { path: "/", element: <HomeScreen /> },
-//   { path: "/home", element: <HomeScreen /> },
-// ];
+export const routeMaps = [
+  {
+    path: "/",
+    element: <LoginScreen />,
+    name: "Login",
+  },
+  {
+    path: "/login",
+    element: <LoginScreen />,
+    name: "Login",
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardScreen />,
+    name: "Dashboard",
+  },
+  {
+    path: "/dashboard/classlevel",
+    element: <ClassLevelScreen />,
+    name: "Class Level",
+  },
+  {
+    path: "/dashboard/material",
+    element: <MaterialScreen />,
+    name: "Material",
+  },
+  {
+    path: "/dashboard/question",
+    element: <QuestionScreen />,
+    name: "Question",
+  },
+  {
+    path: "/dashboard/answer",
+    element: <AnswerScreen />,
+    name: "Answer",
+  },
+  {
+    path: "/dashboard/result",
+    element: <ResultScreen />,
+    name: "Result",
+  },
+  {
+    path: "/dashboard/language",
+    element: <LanguageScreen />,
+    name: "Language",
+  },
+  {
+    path: "/dashboard/translation",
+    element: <TranslationScreen />,
+    name: "Translation",
+  },
+];
 
 export const RouteList = () => {
   const location = useLocation();
@@ -27,16 +75,13 @@ export const RouteList = () => {
 
   return (
     <Routes location={location} key={location.pathname}>
-      <Route path="/" element={<LoginScreen />} />
-      <Route path="/login" element={<LoginScreen />} />
-      <Route path="/dashboard" element={<DashboardScreen />} />
-      <Route path="/dashboard/classlevel" element={<ClassLevelScreen />} />
-      <Route path="/dashboard/material" element={<MaterialScreen />} />
-      <Route path="/dashboard/question" element={<QuestionScreen />} />
-      <Route path="/dashboard/answer" element={<AnswerScreen />} />
-      <Route path="/dashboard/result" element={<ResultScreen />} />
-      <Route path="/dashboard/language" element={<LanguageScreen />} />
-      <Route path="/dashboard/translation" element={<TranslationScreen />} />
+      {routeMaps.map((routeMap) => (
+        <Route
+          path={routeMap.path}
+          element={routeMap.element}
+          key={routeMap.path}
+        />
+      ))}
     </Routes>
   );
 };
