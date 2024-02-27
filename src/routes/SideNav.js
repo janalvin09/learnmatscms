@@ -3,6 +3,8 @@ import profile from "src/assets/profile.json";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { routeMaps } from "./RouteList";
+import { FaTachometerAlt, FaSignOutAlt } from 'react-icons/fa'
+import { IoMdFolder } from 'react-icons/io'
 
 export const SideNav = () => {
   const lottie = {
@@ -23,22 +25,41 @@ export const SideNav = () => {
           <Lottie animationData={profile} />
         </li>
         {routeMaps.map((routeMap) =>
-          routeMap.name !== "Login" ? (
-            <Link
-              to={routeMap.path}
-              className="flex gap-2 cursor-pointer"
-              target="_self"
-              key={routeMap.name}
-            >
-              {routeMap.name}
-            </Link>
-          ) : null
+          routeMap.name !== "Login" && (
+              <Link
+                to={routeMap.path}
+                className="w-full flex gap-2 cursor-pointer"
+                target="_self"
+                key={routeMap.name}
+              >
+              {routeMap.name === 'Dashboard' &&
+                <FaTachometerAlt 
+                  width={5} 
+                  height={5}
+                  className="text-xl text-gray-500"
+                />
+              }
+              {routeMap.name !== 'Dashboard' &&
+                <IoMdFolder 
+                  width={5} 
+                  height={5}
+                  className="text-xl text-gray-500"
+                />
+              }
+                {routeMap.name}
+              </Link>
+          )
         )}
 
         <li
           onClick={() => handleLogout()}
           className="flex gap-2 cursor-pointer"
         >
+          <FaSignOutAlt 
+            width={5}
+            height={5}
+            className="text-xl text-gray-500"
+          />
           <span>Sign out</span>
         </li>
       </ul>
