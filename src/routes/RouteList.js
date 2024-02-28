@@ -11,7 +11,27 @@ import { ResultScreen } from "src/components/Screens/ResultScreen";
 import { LanguageScreen } from "src/components/Screens/LanguageScreen";
 import { TranslationScreen } from "src/components/Screens/TranslationScreen";
 
+
+// CHILD SCREENS0
+import { CreateClassLevelScreen } from "src/components/Screens/crud/create/CreateClassLevelScreen";
+import { CreateAnswerScreen } from "src/components/Screens/crud/create/CreateAnswerScreen";
+import { CreateLanguageScreen } from "src/components/Screens/crud/create/CreateLanguageScreen";
+import { CreateMaterialScreen } from "src/components/Screens/crud/create/CreateMaterialScreen";
+import { CreateQuestionScreen } from "src/components/Screens/crud/create/CreateQuestionScreen";
+import { CreateResultScreen } from "src/components/Screens/crud/create/CreateResultScreen";
+import { CreateTranslationScreen } from "src/components/Screens/crud/create/CreateTranslationScreen";
+
+import { UpdateClassLevelScreen } from "src/components/Screens/crud/update/UpdateClassLevelScreen";
+import { UpdateAnswerScreen } from "src/components/Screens/crud/update/UpdateAnswerScreen";
+import { UpdateLanguageScreen } from "src/components/Screens/crud/update/UpdateLanguageScreen";
+import { UpdateMaterialScreen } from "src/components/Screens/crud/update/UpdateMaterialScreen";
+import { UpdateQuestionScreen } from "src/components/Screens/crud/update/UpdateQuestionScreen";
+import { UpdateResultScreen } from "src/components/Screens/crud/update/UpdateResultScreen";
+import { UpdateTranslationScreen } from "src/components/Screens/crud/update/UpdateTranslationScreen";
+
 import { useEffect } from "react";
+
+
 
 export const routeMaps = [
   {
@@ -64,7 +84,79 @@ export const routeMaps = [
     element: <TranslationScreen />,
     name: "Translation",
   },
+  {
+    path: "/dashboard/classlevel/create",
+    element: <CreateClassLevelScreen />,
+    name: "CreateClassLevel",
+  },
+  {
+    path: "/dashboard/answer/create",
+    element: <CreateAnswerScreen />,
+    name: "CreateAnswer",
+  },
+  {
+    path: "/dashboard/language/create",
+    element: <CreateLanguageScreen />,
+    name: "CreateLanguage",
+  },
+  {
+    path: "/dashboard/material/create",
+    element: <CreateMaterialScreen />,
+    name: "CreateMaterial",
+  },
+  {
+    path: "/dashboard/question/create",
+    element: <CreateQuestionScreen />,
+    name: "CreateQuestion",
+  },
+  {
+    path: "/dashboard/result/create",
+    element: <CreateResultScreen />,
+    name: "CreateResult",
+  },
+  {
+    path: "/dashboard/translation/create",
+    element: <CreateTranslationScreen />,
+    name: "CreateTranslation",
+  },
+
+  {
+    path: "/dashboard/classlevel/update",
+    element: <UpdateClassLevelScreen />,
+    name: "UpdateClassLevel",
+  },
+  {
+    path: "/dashboard/answer/update",
+    element: <UpdateAnswerScreen />,
+    name: "UpdateAnswer",
+  },
+  {
+    path: "/dashboard/language/update",
+    element: <UpdateLanguageScreen />,
+    name: "UpdateLanguage",
+  },
+  {
+    path: "/dashboard/material/update",
+    element: <UpdateMaterialScreen />,
+    name: "UpdateMaterial",
+  },
+  {
+    path: "/dashboard/question/update",
+    element: <UpdateQuestionScreen />,
+    name: "UpdateQuestion",
+  },
+  {
+    path: "/dashboard/result/update",
+    element: <UpdateResultScreen />,
+    name: "UpdateResult",
+  },
+  {
+    path: "/dashboard/translation/update",
+    element: <UpdateTranslationScreen />,
+    name: "UpdateTranslation",
+  }
 ];
+
 
 export const RouteList = () => {
   const location = useLocation();

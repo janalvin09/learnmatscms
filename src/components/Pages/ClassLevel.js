@@ -4,6 +4,7 @@ export const ClassLevel = () => {
   // Sample data for grades
   const grades = ["Grade 1", "Grade 2", "Grade 3"]; // Add more grades as needed
 
+
   return (
     <div className="p-8 classlevel_main">
       <h1 className="mb-8 text-4xl font-bold">Class Levels</h1>
