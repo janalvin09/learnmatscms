@@ -23,11 +23,14 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    // ES6
-    if (
-      data.email === process.env.REACT_APP_ADMIN_USERNAME &&
-      data.password === process.env.REACT_APP_ADMIN_PASSWORD
-    ) {
+    const enteredEmail = data.email;
+    const enteredPassword = data.password;
+  
+    // Hardcoded credentials
+    const adminUsername = "admin@email.com";
+    const adminPassword = "admin123";
+  
+    if (enteredEmail === adminUsername && enteredPassword === adminPassword) {
       toast("Login Success!", { type: "success" });
       navigate("/dashboard");
     } else {
