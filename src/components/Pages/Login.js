@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { LazyImage } from "../Lazy/Lazy";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { BiLogIn } from "react-icons/bi";
-import { toast } from "react-toastify";
 import books from "src/assets/books.webp";
+import { AuthContext } from "src/contexts/AuthContext";
 
-import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const {
@@ -20,22 +19,10 @@ export const Login = () => {
     },
   });
   const [isPasswordVisible, setisPasswordVisible] = useState(false);
-  const navigate = useNavigate();
+  const { login } = useContext(AuthContext)
 
   const onSubmit = (data) => {
-    const enteredEmail = data.email;
-    const enteredPassword = data.password;
-  
-    // Hardcoded credentials
-    const adminUsername = "admin@email.com";
-    const adminPassword = "admin123";
-  
-    if (enteredEmail === adminUsername && enteredPassword === adminPassword) {
-      toast("Login Success!", { type: "success" });
-      navigate("/dashboard");
-    } else {
-      toast("Invalid Credentials!", { type: "warning" });
-    }
+    login(data)
   };
 
   const handlePasswordVisibility = (isVisible) => {
