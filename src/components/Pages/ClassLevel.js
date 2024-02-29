@@ -8,6 +8,8 @@ import { AiFillDelete } from 'react-icons/ai'
 import Lottie from 'lottie-react'
 import book from 'src/assets/book.json'
 
+import { UtcDateFormatter } from "src/utils/helpers";
+
 export const ClassLevel = () => {
   const { classlevels } = UseClassLevelStore((state) => ({ classlevels: state.classlevels }));
 
@@ -45,10 +47,13 @@ export const ClassLevel = () => {
               <Lottie animationData={book}/>
             </div>
           </div>
-          <div className="p-6">
-            <p className="text-gray-600">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia.
-            </p>
+          <div className="flex flex-col gap-2">
+            <label className="text-gray-600 text-base px-4 mt-4">
+              <span className="font-bold">Date</span> : {UtcDateFormatter(classlevel.createdAt)}
+            </label>
+            <label className="text-gray-600 text-base px-4">
+              <span className="font-bold">Updated</span>  : {UtcDateFormatter(classlevel.updatedAt)}
+            </label>
           </div>
           <div className="flex justify-center gap-4 py-2">    
             <motion.span
