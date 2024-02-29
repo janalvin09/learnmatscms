@@ -14,6 +14,6 @@ export const getDecryptedUser = ( user ) => {
 }
 
 export const UtcDateFormatter = (date) => {
-  return `${dayjs(date).format("YYYY")}, ${dayjs().format("MMMM")} ${dayjs().format("DD")}`
+  return `${dayjs(date).format("YYYY")}, ${dayjs(date).format("MMMM")} ${dayjs(date).format("DD")}`
   
 }
