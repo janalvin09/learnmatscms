@@ -13,6 +13,14 @@ export const getDecryptedUser = ( user ) => {
   return userdata
 }
 
+export const encodeURL = (value) => {
+  return encodeURIComponent(JSON.stringify(value))
+}
+
+export const decodeURL = (value) => {
+  return JSON.parse(decodeURIComponent(value))
+}
+
 export const UtcDateFormatter = (date) => {
   return `${dayjs(date).format("YYYY")}, ${dayjs(date).format("MMMM")} ${dayjs(date).format("DD")}`
   
