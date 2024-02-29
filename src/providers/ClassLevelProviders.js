@@ -26,7 +26,7 @@ export const ClassLevelProviders = ({ children }) => {
     },
   });
 
-  const { mutate: handleUpdateClasslevel } = useMutation({
+  const { mutate: handleUpdateClasslevel, isLoading: updateClassLevelLoading } = useMutation({
     mutationFn: UpdateClasslevel,
     onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['classlevel'] });
@@ -72,7 +72,8 @@ export const ClassLevelProviders = ({ children }) => {
         createClassLevel: (payload) => { handleCreateClasslevel(payload) },
         updateClassLevel: (payload) => { handleUpdateClasslevel(payload) },
         removeClassLevel: (payload) => { handleRemoveClasslevel(payload) },
-        createClassLevelLoading: createClassLevelLoading
+        createClassLevelLoading: createClassLevelLoading,
+        updateClassLevelLoading: updateClassLevelLoading
       }}
     >
       {children}

@@ -111,7 +111,7 @@ export const routeMaps = [
   },
 
   {
-    path: "/dashboard/classlevel/update",
+    path: "/dashboard/classlevel/:classlevel",
     element: <UpdateClassLevelScreen />,
     name: "UpdateClassLevel",
   },
