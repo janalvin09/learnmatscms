@@ -16,7 +16,7 @@ export const AuthProviders = ({ children }) => {
     setUserLogout: state.setUserLogout
   }));
 
-  const { mutate: handleLoginUser } = useMutation({
+  const { mutate: handleLoginUser, isLoading: loginLoading } = useMutation({
     mutationFn: Login,
     onSuccess: (data) => {
         queryClient.invalidateQueries({ queryKey: ['login'] });
@@ -42,8 +42,8 @@ export const AuthProviders = ({ children }) => {
   }
 
   const logout = () => {
-    navigate("/login")
     setUserLogout()
+    navigate("/login")
     toast("logout success!", { type: "success" })
   }
 
@@ -52,7 +52,8 @@ export const AuthProviders = ({ children }) => {
       value={{
         login: (data) => { login(data) },
         authenticate: (user) => { authenticate(user) },
-        logout: () => { logout() }
+        logout: () => { logout() },
+        loginLoading: loginLoading
       }}
     >
       {children}
