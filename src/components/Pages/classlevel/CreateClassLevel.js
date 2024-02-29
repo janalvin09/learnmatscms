@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Controller, useForm } from "react-hook-form";
+import { ClasslevelContext } from 'src/contexts/ClassLevelContext';
+import { useUserStore } from 'src/store/auth';
 
 export const CreateClassLevel = () => {
+  const { createClassLevel, createClassLevelLoading } = useContext(ClasslevelContext)
+  const { token } = useUserStore((state) => ({ token: state.token }));
   const {
     handleSubmit,
     control,
@@ -13,7 +17,13 @@ export const CreateClassLevel = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data)
+    if(token) {
+      let payload = {
+        ...data,
+        user: token
+      }
+      createClassLevel(payload)
+    }
   }
 
   return (
@@ -22,7 +32,7 @@ export const CreateClassLevel = () => {
       <form 
         onSubmit={handleSubmit(onSubmit)}
         className='form_container bg-white rounded-lg shadow-xl p-8 flex flex-col gap-4'>
-        <h1 className='text-center text-2xl font-bold mb-4'> Create your class level </h1>
+        <h1 className='text-center text-2xl font-bold mb-4'> Create class level: </h1>
           <div className='name_field'>
               <Controller
                 control={control}
@@ -49,10 +59,11 @@ export const CreateClassLevel = () => {
           </div>
           <div className="min-w-[20rem]">
             <button
+              disabled={createClassLevelLoading}
               type="submit"
               className="w-full text-gray-900 bg-green-400 flex justify-center items-cente selection:cursor-pointer mt-2 mb-4 p-2 rounded-lg"
             >
-              Submit
+                {createClassLevelLoading ? "Please wait..." : "Submit" }
             </button>
           </div>
       </form>
