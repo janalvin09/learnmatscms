@@ -1,21 +1,21 @@
+import { useContext } from "react";
 import Lottie from "lottie-react";
 import profile from "src/assets/profile.json";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import { routeMaps } from "./RouteList";
 import { FaTachometerAlt, FaSignOutAlt } from "react-icons/fa";
 import { IoMdFolder } from "react-icons/io";
+import { AuthContext } from "src/contexts/AuthContext";
 
 export const SideNav = () => {
   const lottie = {
     width: 100,
     height: 100,
   };
-  const navigate = useNavigate();
+  const { logout } = useContext(AuthContext)
 
   const handleLogout = () => {
-    toast("Logout Success!", { type: "success" });
-    navigate("/login");
+    logout()
   };
 
   const ignoreOtherRoutes = (routeName) => {

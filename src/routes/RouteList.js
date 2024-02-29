@@ -29,21 +29,11 @@ import { UpdateQuestionScreen } from "src/components/Screens/crud/update/UpdateQ
 import { UpdateResultScreen } from "src/components/Screens/crud/update/UpdateResultScreen";
 import { UpdateTranslationScreen } from "src/components/Screens/crud/update/UpdateTranslationScreen";
 
-import { useEffect } from "react";
-
-
+//  ROUTES PRIVELEGE
+import PrivateRoutes from "./PrivateRoute";
+import LoginRoutes from "./LoginRoute";
 
 export const routeMaps = [
-  {
-    path: "/",
-    element: <LoginScreen />,
-    name: "Login",
-  },
-  {
-    path: "/login",
-    element: <LoginScreen />,
-    name: "Login",
-  },
   {
     path: "/dashboard",
     element: <DashboardScreen />,
@@ -161,19 +151,24 @@ export const routeMaps = [
 export const RouteList = () => {
   const location = useLocation();
 
-  useEffect(() => {
-    console.log(location);
-  }, [location]);
-
   return (
     <Routes location={location} key={location.pathname}>
-      {routeMaps.map((routeMap) => (
-        <Route
-          path={routeMap.path}
-          element={routeMap.element}
-          key={routeMap.path}
-        />
-      ))}
+
+      <Route element={<PrivateRoutes />}>
+        {routeMaps.map((routeMap) => (
+          <Route
+            path={routeMap.path}
+            element={routeMap.element}
+            key={routeMap.path}
+          />
+        ))}
+      </Route>
+
+      <Route element={<LoginRoutes />}>
+        <Route path="/login" element={<LoginScreen />}/>
+        <Route path="/" element={<LoginScreen />}/>
+      </Route>
+
     </Routes>
   );
 };

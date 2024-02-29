@@ -12,11 +12,11 @@ const userStore = persist(
   setToken: (data) => set(() => ({
     token: data
   })),
-  setUserLogout: () => set(() => ({ user: null })),
+  setUserLogout: () => set(() => ({ user: null, token: null })),
   }),
   {
     name: 'user', // name of the item in the storage (must be unique)
-    storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+    storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
   }
 );
 

@@ -19,7 +19,7 @@ export const Login = () => {
     },
   });
   const [isPasswordVisible, setisPasswordVisible] = useState(false);
-  const { login } = useContext(AuthContext)
+  const { login, loginLoading } = useContext(AuthContext)
 
   const onSubmit = (data) => {
     login(data)
@@ -28,6 +28,7 @@ export const Login = () => {
   const handlePasswordVisibility = (isVisible) => {
     setisPasswordVisible(!isVisible);
   };
+
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen mx-4 login_main">
@@ -108,11 +109,12 @@ export const Login = () => {
             </div>
             <div className="min-w-[20rem]">
               <button
+                disabled={loginLoading}
                 type="submit"
                 className="w-full text-gray-900 bg-white flex justify-center items-center gap-4 cursor-pointer hover:bg-gray-300 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-4"
               >
                 <BiLogIn width={50} height={50} />
-                Login
+                {loginLoading ? "Please wait..." : "Login" }
               </button>
             </div>
           </div>
