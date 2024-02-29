@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CreateButton } from "../Partial/CreateButton";
+import { ClasslevelContext } from "src/contexts/ClassLevelContext";
 import { UseClassLevelStore } from "src/store/classlevel";
+import { useUserStore } from "src/store/auth";
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { BiSolidEdit } from 'react-icons/bi'
@@ -8,12 +10,23 @@ import { AiFillDelete } from 'react-icons/ai'
 import Lottie from 'lottie-react'
 import book from 'src/assets/book.json'
 
-import { UtcDateFormatter } from "src/utils/helpers";
+import { UtcDateFormatter, encodeURL } from "src/utils/helpers";
 
 export const ClassLevel = () => {
   const { classlevels } = UseClassLevelStore((state) => ({ classlevels: state.classlevels }));
+  const { token } = useUserStore((state) => ({ token: state.token }));
+  const { removeClassLevel } = useContext(ClasslevelContext)
 
-  // Sample data for grades
+  const handleRemoveClasslevel = (classlevel_id) => {
+    if(token) {
+      let payload = {
+        classlevel_id,
+        user: token
+      }
+      removeClassLevel(payload)
+    }
+  }
+  
 
   if(!classlevels?.length) {
     return (
@@ -61,13 +74,13 @@ export const ClassLevel = () => {
               transition={{ type: "spring", stiffness: 400, ease: "easeInOut" }}
               className="font-bold text-green-700 cursor-pointer"
             >
-              <Link href={`#`}>
+              <Link to={`/dashboard/classlevel/${encodeURL(classlevel)}`}>
                 <BiSolidEdit size={"1.2rem"}/>
               </Link>
             </motion.span>
             {/* {IfhasTask(tasks, category.id) < 0 && */}
             <motion.span
-              // onClick={() => handleRemoveCategory(category.id)} 
+              onClick={() => handleRemoveClasslevel(classlevel.id)} 
               whileHover={{ scale: 1.5 }} 
               transition={{ type: "spring", stiffness: 400, ease: "easeInOut" }}
               className="font-bold text-red-400 cursor-pointer"
