@@ -1,9 +1,26 @@
 import React from "react";
 import { CreateButton } from "../Partial/CreateButton";
+import { UseClassLevelStore } from "src/store/classlevel";
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { BiSolidEdit } from 'react-icons/bi'
+import { AiFillDelete } from 'react-icons/ai'
+import Lottie from 'lottie-react'
+import book from 'src/assets/book.json'
 
 export const ClassLevel = () => {
+  const { classlevels } = UseClassLevelStore((state) => ({ classlevels: state.classlevels }));
+
   // Sample data for grades
-  const grades = ["Grade 1", "Grade 2", "Grade 3", "Grade 4"]; // Add more grades as needed
+
+  if(!classlevels?.length) {
+    return (
+      <div className="categories_main w-ull p-20">
+        no classlevel found!  
+      </div>
+    )
+  }
+
 
   return (
     <div className="p-8 classlevel_main">
@@ -16,22 +33,47 @@ export const ClassLevel = () => {
       />
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {grades.map((grade, index) => (
+      {classlevels?.length && classlevels.map((classlevel, index) => {
+        return (
           <div
-            key={index}
-            className="overflow-hidden transition duration-300 transform bg-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105"
-          >
-            <div className="p-4 text-white bg-gradient-to-r from-blue-500 to-purple-500">
-              <h2 className="mb-2 text-xl font-semibold">{grade}</h2>
-            </div>
-            <div className="p-6">
-              <p className="text-gray-600">
-                {grade} Reading Materials📖
-              </p>
-              {/* Add more content or actions specific to each grade */}
+          key={index}
+          className="overflow-hidden transition duration-300 transform bg-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105"
+        >
+          <div className="p-4 text-white bg-gradient-to-r from-blue-500 to-purple-500 flex justify-between items-center">
+            <h2 className="text-xl font-semibold">{classlevel.name}</h2>
+            <div className="w-[4.5rem] h-[4.5rem]">
+              <Lottie animationData={book}/>
             </div>
           </div>
-        ))}
+          <div className="p-6">
+            <p className="text-gray-600">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia.
+            </p>
+          </div>
+          <div className="flex justify-center gap-4 py-2">    
+            <motion.span
+              whileHover={{ scale: 1.5 }} 
+              transition={{ type: "spring", stiffness: 400, ease: "easeInOut" }}
+              className="font-bold text-green-700 cursor-pointer"
+            >
+              <Link href={`#`}>
+                <BiSolidEdit size={"1.2rem"}/>
+              </Link>
+            </motion.span>
+            {/* {IfhasTask(tasks, category.id) < 0 && */}
+            <motion.span
+              // onClick={() => handleRemoveCategory(category.id)} 
+              whileHover={{ scale: 1.5 }} 
+              transition={{ type: "spring", stiffness: 400, ease: "easeInOut" }}
+              className="font-bold text-red-400 cursor-pointer"
+            >
+              <AiFillDelete size={"1.2rem"}/>
+            </motion.span>
+          {/* } */}
+            </div>
+        </div>
+        )
+      })}
       </div>
     </div>
   );

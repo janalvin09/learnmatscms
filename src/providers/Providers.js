@@ -5,8 +5,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 // PROVIDERS
-import { TanstackProviders } from "./TanstackProviders"
 import { AuthProviders } from "./AuthProviders" 
+import { TanstackProviders } from "./TanstackProviders"
+import { ClassLevelProviders } from "./ClassLevelProviders"
 
 export const Providers = () => {
   return (
@@ -14,8 +15,10 @@ export const Providers = () => {
       <Router>
         <TanstackProviders>
           <AuthProviders>
+            <ClassLevelProviders>
               <NavRoutes />
               <ToastContainer />
+            </ClassLevelProviders>
           </AuthProviders>
         </TanstackProviders>
       </Router>
