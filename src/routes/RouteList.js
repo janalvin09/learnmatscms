@@ -126,7 +126,7 @@ export const routeMaps = [
     name: "UpdateLanguage",
   },
   {
-    path: "/dashboard/material/update",
+    path: "/dashboard/material/:material",
     element: <UpdateMaterialScreen />,
     name: "UpdateMaterial",
   },

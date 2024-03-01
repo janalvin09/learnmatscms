@@ -8,6 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { AuthProviders } from "./AuthProviders" 
 import { TanstackProviders } from "./TanstackProviders"
 import { ClassLevelProviders } from "./ClassLevelProviders"
+import { MaterialProviders } from "./MaterialProviders"
 
 export const Providers = () => {
   return (
@@ -16,8 +17,10 @@ export const Providers = () => {
         <TanstackProviders>
           <AuthProviders>
             <ClassLevelProviders>
-              <NavRoutes />
-              <ToastContainer />
+              <MaterialProviders>
+                <NavRoutes />
+                <ToastContainer />
+              </MaterialProviders>
             </ClassLevelProviders>
           </AuthProviders>
         </TanstackProviders>
