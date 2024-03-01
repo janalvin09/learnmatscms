@@ -1,5 +1,6 @@
 import { AES, enc } from "crypto-js";
 import dayjs from 'dayjs'
+import _ from "lodash";
 
 export const EncryptUser = ( user ) => {
   const encryptedUser = AES.encrypt(JSON.stringify({ ...user }), "user").toString()
@@ -24,4 +25,8 @@ export const decodeURL = (value) => {
 export const UtcDateFormatter = (date) => {
   return `${dayjs(date).format("YYYY")}, ${dayjs(date).format("MMMM")} ${dayjs(date).format("DD")}`
   
+}
+
+export const is_hasMaterial = (materials, classlevel_id) => {
+  return _.findIndex(materials, (material) => { return material.classlevel_id === classlevel_id })
 }
