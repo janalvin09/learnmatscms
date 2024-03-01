@@ -131,7 +131,7 @@ export const routeMaps = [
     name: "UpdateMaterial",
   },
   {
-    path: "/dashboard/question/update",
+    path: "/dashboard/question/:question",
     element: <UpdateQuestionScreen />,
     name: "UpdateQuestion",
   },
