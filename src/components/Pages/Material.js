@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import { CreateButton } from "../Partial/CreateButton";
 import { MaterialContext } from "src/contexts/MaterialContext";
 import { UseMaterialStore } from "src/store/material";
 import { UseClassLevelStore } from "src/store/classlevel";
+import { UseQuestionStore } from "src/store/question";
 import { useUserStore } from "src/store/auth";
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -10,15 +11,27 @@ import { BiSolidEdit } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
 import Lottie from 'lottie-react'
 import book from 'src/assets/book.json'
-import { UtcDateFormatter, encodeURL } from "src/utils/helpers";
+import { UtcDateFormatter, encodeURL, is_hasQuestion } from "src/utils/helpers";
+import { DropDown } from "../Partial/Select";
 import _ from "lodash";
 
 export const Material = () => {
 
   const { materials } = UseMaterialStore((state) => ({ materials: state.materials }));
   const { classlevels } = UseClassLevelStore((state) => ({ classlevels: state.classlevels }));
+  const { questions } = UseQuestionStore((state) => ({ questions: state.questions }));
   const { token } = useUserStore((state) => ({ token: state.token }));
   const { removeMaterial } = useContext(MaterialContext)
+  const [ selected, setSelected ] = useState()
+
+  const materialCallback = useCallback((materials, classlevel_id) => {
+    if(classlevel_id) {
+      const newMaterials = _.filter(materials, (i) => { return i.classlevel_id === Number(classlevel_id) })
+      return newMaterials
+    } else {
+      return materials
+    }
+  }, [])
 
   const handleRemoveMaterial = (material_id) => {
     if(token) {
@@ -31,10 +44,10 @@ export const Material = () => {
   }
   
 
-  if(!classlevels?.length) {
+  if(!materials?.length) {
     return (
       <div className="categories_main w-ull p-20">
-        no classlevel found!  
+        no material found!  
       </div>
     )
   }
@@ -45,19 +58,32 @@ export const Material = () => {
     return classlevel.name
   }
 
+  
   return (
     <div className='material_main w-full p-8'>
       <h1 className="mb-8 text-4xl font-bold">List of Materials</h1>
 
-      <CreateButton
-        destination={"/dashboard/material/create"} 
-        styles={"create-btn-main bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5"}
-        label={"add material"}
-      />
+      <div className="flex gap-2">
+        <CreateButton
+          destination={"/dashboard/material/create"} 
+          styles={"create-btn-main bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5"}
+          label={"add material"}
+        />
+        <div className="w-1/4">
+        <DropDown 
+            value={selected}
+            onChange={(e) => setSelected(e.target.value)}
+            className={`h-full w-full border-2 p-2 rounded-lg outline-none appearance-none`}
+            ariaPlaceHolder="by class level"
+            required={false}
+            data={classlevels}
+          />
+        </div>
+      </div>
 
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {materials?.length && materials.map((material, index) => {
+      {materialCallback(materials, selected)?.length && materialCallback(materials, selected).map((material, index) => {
         return (
           <div
           key={index}
@@ -90,7 +116,7 @@ export const Material = () => {
                 <BiSolidEdit size={"1.2rem"}/>
               </Link>
             </motion.span>
-            {/* {IfhasTask(tasks, category.id) < 0 && */}
+            {is_hasQuestion(questions, material.id) < 0 &&
             <motion.span
               onClick={() => handleRemoveMaterial(material.id)} 
               whileHover={{ scale: 1.5 }} 
@@ -99,7 +125,7 @@ export const Material = () => {
             >
               <AiFillDelete size={"1.2rem"}/>
             </motion.span>
-          {/* } */}
+            }
             </div>
         </div>
         )
