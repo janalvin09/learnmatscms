@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { CreateButton } from "../Partial/CreateButton";
 import { ClasslevelContext } from "src/contexts/ClassLevelContext";
 import { UseClassLevelStore } from "src/store/classlevel";
+import { UseMaterialStore } from "src/store/material";
 import { useUserStore } from "src/store/auth";
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -10,10 +11,11 @@ import { AiFillDelete } from 'react-icons/ai'
 import Lottie from 'lottie-react'
 import book from 'src/assets/book.json'
 
-import { UtcDateFormatter, encodeURL } from "src/utils/helpers";
+import { UtcDateFormatter, encodeURL, is_hasMaterial } from "src/utils/helpers";
 
 export const ClassLevel = () => {
   const { classlevels } = UseClassLevelStore((state) => ({ classlevels: state.classlevels }));
+  const { materials } = UseMaterialStore((state) => ({ materials: state.materials }));
   const { token } = useUserStore((state) => ({ token: state.token }));
   const { removeClassLevel } = useContext(ClasslevelContext)
 
@@ -78,7 +80,7 @@ export const ClassLevel = () => {
                 <BiSolidEdit size={"1.2rem"}/>
               </Link>
             </motion.span>
-            {/* {IfhasTask(tasks, category.id) < 0 && */}
+            {is_hasMaterial(materials, classlevel.id) < 0 &&
             <motion.span
               onClick={() => handleRemoveClasslevel(classlevel.id)} 
               whileHover={{ scale: 1.5 }} 
@@ -87,7 +89,7 @@ export const ClassLevel = () => {
             >
               <AiFillDelete size={"1.2rem"}/>
             </motion.span>
-          {/* } */}
+            }
             </div>
         </div>
         )
