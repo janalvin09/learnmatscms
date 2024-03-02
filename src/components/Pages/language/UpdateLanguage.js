@@ -62,11 +62,10 @@ export const UpdateLanguage = () => {
               )}
               name="lang_code"
             />
-            {errors.name && (
+            {errors.lang_code && (
               <p className="text-sm text-red-400 indent-2">language code is invalid*</p>
             )}            
           </div>
-
           <div className='name_field'>
               <Controller
                 control={control}
@@ -97,7 +96,7 @@ export const UpdateLanguage = () => {
               type="submit"
               className="w-full text-gray-900 bg-green-400 flex justify-center items-cente selection:cursor-pointer mt-2 mb-4 p-2 rounded-lg"
             >
-                {updateLanguageLoading ? "Please wait..." : "Submit" }
+                {updateLanguageLoading ? "Please wait..." : "Update" }
             </button>
           </div>
       </form>
