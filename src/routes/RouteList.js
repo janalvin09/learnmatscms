@@ -116,7 +116,7 @@ export const routeMaps = [
     name: "UpdateClassLevel",
   },
   {
-    path: "/dashboard/answer/update",
+    path: "/dashboard/answer/:answer",
     element: <UpdateAnswerScreen />,
     name: "UpdateAnswer",
   },
