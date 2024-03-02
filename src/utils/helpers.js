@@ -38,3 +38,7 @@ export const is_hasQuestion = (questions, material_id) => {
 export const is_hasAnswer = (answers, question_id) => {
   return _.findIndex(answers, (answer) =>  { return answer.question_id === question_id })
 }
+
+export const is_hasTranslation = (translations, language_id) => {
+  return _.findIndex(translations, (translation) => { return translation.language_id === language_id })
+}

@@ -12,6 +12,7 @@ import { MaterialProviders } from "./MaterialProviders"
 import { QuestionProviders } from "./QuestionProviders"
 import { AnswerProviders } from "./AnswerProviders"
 import { LanguageProviders } from "./LanguageProviders"
+import { TranslationProviders } from "./TranslationProviders"
 import { useUserStore } from "src/store/auth"
 
 export const Providers = () => {
@@ -28,8 +29,10 @@ export const Providers = () => {
                   <QuestionProviders>
                     <AnswerProviders>
                       <LanguageProviders>
-                        <NavRoutes />
-                        <ToastContainer />      
+                        <TranslationProviders>
+                          <NavRoutes />
+                          <ToastContainer />      
+                        </TranslationProviders>
                       </LanguageProviders>
                     </AnswerProviders>
                   </QuestionProviders>
