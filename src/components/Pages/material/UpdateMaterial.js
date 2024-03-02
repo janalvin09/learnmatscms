@@ -46,7 +46,7 @@ export const UpdateMaterial = () => {
   }
 
   return (
-    <div className='create-material-main min-h-screen bg-gray-200 w-full flex justify-center items-center'>
+    <div className='update-material-main min-h-screen bg-gray-200 w-full flex justify-center items-center'>
       <form 
         onSubmit={handleSubmit(onSubmit)}
         className='form_container bg-white rounded-lg shadow-xl p-8 flex flex-col gap-4'>

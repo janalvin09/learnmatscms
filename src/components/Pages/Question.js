@@ -3,6 +3,7 @@ import { CreateButton } from "../Partial/CreateButton";
 import { QuestionContext } from "src/contexts/QuestionContext";
 import { UseQuestionStore } from "src/store/question";
 import { UseMaterialStore } from "src/store/material";
+import { UseAnswerStore } from "src/store/answer";
 import { useUserStore } from "src/store/auth";
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -10,7 +11,7 @@ import { BiSolidEdit } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
 import Lottie from 'lottie-react'
 import book from 'src/assets/book.json'
-import { UtcDateFormatter, encodeURL } from "src/utils/helpers";
+import { UtcDateFormatter, encodeURL, is_hasAnswer } from "src/utils/helpers";
 import { DropDown } from "../Partial/Select";
 import _ from "lodash";
 
@@ -19,6 +20,7 @@ export const Question = () => {
 
   const { questions } = UseQuestionStore((state) => ({ questions: state.questions }));
   const { materials } = UseMaterialStore((state) => ({ materials: state.materials }));
+  const { answers } = UseAnswerStore((state) => ({ answers: state.answers }));
   const { token } = useUserStore((state) => ({ token: state.token }));
   const { removeQuestion } = useContext(QuestionContext)
   const [ selected, setSelected ] = useState()
@@ -113,7 +115,7 @@ export const Question = () => {
                   <BiSolidEdit size={"1.2rem"}/>
                 </Link>
               </motion.span>
-              {/* {IfhasTask(tasks, category.id) < 0 && */}
+              {is_hasAnswer(answers, question.id) < 0 &&
               <motion.span
                 onClick={() => handleRemoveQuestion(question.id)} 
                 whileHover={{ scale: 1.5 }} 
@@ -122,7 +124,7 @@ export const Question = () => {
               >
                 <AiFillDelete size={"1.2rem"}/>
               </motion.span>
-            {/* } */}
+              }
               </div>
           </div>
           )

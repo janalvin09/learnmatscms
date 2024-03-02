@@ -10,6 +10,7 @@ import { TanstackProviders } from "./TanstackProviders"
 import { ClassLevelProviders } from "./ClassLevelProviders"
 import { MaterialProviders } from "./MaterialProviders"
 import { QuestionProviders } from "./QuestionProviders"
+import { AnswerProviders } from "./AnswerProviders"
 
 export const Providers = () => {
   return (
@@ -20,8 +21,10 @@ export const Providers = () => {
             <ClassLevelProviders>
               <MaterialProviders>
                 <QuestionProviders>
-                  <NavRoutes />
-                  <ToastContainer />  
+                  <AnswerProviders>
+                    <NavRoutes />
+                    <ToastContainer />    
+                  </AnswerProviders>
                 </QuestionProviders>
               </MaterialProviders>
             </ClassLevelProviders>
