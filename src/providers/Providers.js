@@ -11,6 +11,7 @@ import { ClassLevelProviders } from "./ClassLevelProviders"
 import { MaterialProviders } from "./MaterialProviders"
 import { QuestionProviders } from "./QuestionProviders"
 import { AnswerProviders } from "./AnswerProviders"
+import { LanguageProviders } from "./LanguageProviders"
 import { useUserStore } from "src/store/auth"
 
 export const Providers = () => {
@@ -26,8 +27,10 @@ export const Providers = () => {
                 <MaterialProviders>
                   <QuestionProviders>
                     <AnswerProviders>
-                      <NavRoutes />
-                      <ToastContainer />    
+                      <LanguageProviders>
+                        <NavRoutes />
+                        <ToastContainer />      
+                      </LanguageProviders>
                     </AnswerProviders>
                   </QuestionProviders>
                 </MaterialProviders>
