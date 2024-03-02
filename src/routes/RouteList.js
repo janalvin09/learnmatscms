@@ -121,7 +121,7 @@ export const routeMaps = [
     name: "UpdateAnswer",
   },
   {
-    path: "/dashboard/language/update",
+    path: "/dashboard/language/:language",
     element: <UpdateLanguageScreen />,
     name: "UpdateLanguage",
   },

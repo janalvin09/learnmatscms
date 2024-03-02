@@ -47,10 +47,10 @@ export const Answer = () => {
   }
   
 
-  if(!questions?.length) {
+  if(!answers?.length) {
     return (
       <div className="categories_main w-ull p-20">
-        no questions found!  
+        no answers found!  
       </div>
     )
   }
