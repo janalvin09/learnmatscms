@@ -34,3 +34,7 @@ export const is_hasMaterial = (materials, classlevel_id) => {
 export const is_hasQuestion = (questions, material_id) => {
   return _.findIndex(questions, (question) => { return question.material_id === material_id })
 }
+
+export const is_hasAnswer = (answers, question_id) => {
+  return _.findIndex(answers, (answer) =>  { return answer.question_id === question_id })
+}
