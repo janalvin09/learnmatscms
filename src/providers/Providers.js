@@ -11,24 +11,34 @@ import { ClassLevelProviders } from "./ClassLevelProviders"
 import { MaterialProviders } from "./MaterialProviders"
 import { QuestionProviders } from "./QuestionProviders"
 import { AnswerProviders } from "./AnswerProviders"
+import { useUserStore } from "src/store/auth"
 
 export const Providers = () => {
+  const { user } = useUserStore((state) => ({ user: state.user }));
+  
   return (
     <React.Fragment>
       <Router>
         <TanstackProviders>
-          <AuthProviders>
-            <ClassLevelProviders>
-              <MaterialProviders>
-                <QuestionProviders>
-                  <AnswerProviders>
-                    <NavRoutes />
-                    <ToastContainer />    
-                  </AnswerProviders>
-                </QuestionProviders>
-              </MaterialProviders>
-            </ClassLevelProviders>
-          </AuthProviders>
+          {user ? (
+            <AuthProviders>
+              <ClassLevelProviders>
+                <MaterialProviders>
+                  <QuestionProviders>
+                    <AnswerProviders>
+                      <NavRoutes />
+                      <ToastContainer />    
+                    </AnswerProviders>
+                  </QuestionProviders>
+                </MaterialProviders>
+              </ClassLevelProviders>
+            </AuthProviders>
+          ) : (
+            <AuthProviders>
+              <NavRoutes />
+              <ToastContainer />  
+            </AuthProviders>
+          )}
         </TanstackProviders>
       </Router>
     </React.Fragment>
