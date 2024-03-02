@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { CreateButton } from "../Partial/CreateButton";
 import { LanguageContext } from "src/contexts/LanguageContext";
 import { UseLanguageStore } from "src/store/language";
+import { UseTranslationStore } from "src/store/translation";
 import { useUserStore } from "src/store/auth";
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -9,10 +10,11 @@ import { BiSolidEdit } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
 import Lottie from 'lottie-react'
 import book from 'src/assets/book.json'
-import { UtcDateFormatter, encodeURL } from "src/utils/helpers";
+import { UtcDateFormatter, encodeURL, is_hasTranslation } from "src/utils/helpers";
 
 export const Language = () => {
   const { languages } = UseLanguageStore((state) => ({ languages: state.languages }));
+  const { translations } = UseTranslationStore((state) => ({ translations: state.translations }));
   const { token } = useUserStore((state) => ({ token: state.token }));
   const { removeLanguage } = useContext(LanguageContext)
 
@@ -78,7 +80,7 @@ export const Language = () => {
                   <BiSolidEdit size={"1.2rem"}/>
                 </Link>
               </motion.span>
-              {/* {is_hasMaterial(materials, classlevel.id) < 0 && */}
+              {is_hasTranslation(translations, language.id) < 0 &&
               <motion.span
                 onClick={() => handleRemoveLanguage(language.id)} 
                 whileHover={{ scale: 1.5 }} 
@@ -87,7 +89,7 @@ export const Language = () => {
               >
                 <AiFillDelete size={"1.2rem"}/>
               </motion.span>
-              {/* } */}
+              } 
               </div>
           </div>
           )

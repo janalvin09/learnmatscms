@@ -52,7 +52,7 @@ export const CreateLanguage = () => {
               )}
               name="lang_code"
             />
-            {errors.name && (
+            {errors.lang_code && (
               <p className="text-sm text-red-400 indent-2">language code is invalid*</p>
             )}            
           </div>

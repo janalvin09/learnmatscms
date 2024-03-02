@@ -141,7 +141,7 @@ export const routeMaps = [
     name: "UpdateResult",
   },
   {
-    path: "/dashboard/translation/update",
+    path: "/dashboard/translation/:translation",
     element: <UpdateTranslationScreen />,
     name: "UpdateTranslation",
   }
