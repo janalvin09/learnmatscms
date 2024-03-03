@@ -56,7 +56,6 @@ export const CreateLanguage = () => {
               <p className="text-sm text-red-400 indent-2">language code is invalid*</p>
             )}            
           </div>
-
           <div className='name_field'>
               <Controller
                 control={control}
@@ -71,7 +70,7 @@ export const CreateLanguage = () => {
                     type="text"
                     name="name"
                     id="name"
-                    placeholder="enter a class level name"
+                    placeholder="enter a language name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   />
                 )}

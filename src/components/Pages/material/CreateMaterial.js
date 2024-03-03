@@ -34,8 +34,23 @@ export const CreateMaterial = () => {
       createMaterial(payload)
     }
   }
+
+  // const {
+  //   handleSubmit: handleFileSubmit,
+  //   control: fileControl,
+  // } = useForm({
+  //   defaultValues: {
+  //     file: null
+  //   },
+  // });
+
+  // const onSubmitFile = (data) => {
+  //   console.log(data)
+  // }
+
+
   return (
-    <div className='create-material-main min-h-screen bg-gray-200 w-full flex justify-center items-center'>
+    <div className='create-material-main min-h-screen bg-gray-200 w-full flex gap-2 justify-center items-center'>
       <form 
         onSubmit={handleSubmit(onSubmit)}
         className='form_container bg-white rounded-lg shadow-xl p-8 flex flex-col gap-4'>
@@ -176,6 +191,47 @@ export const CreateMaterial = () => {
             </button>
           </div>
       </form>
+
+      {/* <form 
+        onSubmit={handleFileSubmit(onSubmitFile)}
+        className='form_container bg-white rounded-lg shadow-xl p-8 flex flex-col gap-4'>
+        <h1 className='text-center text-2xl font-bold mb-4'> Test file uploading: </h1>
+
+
+          <div className='file_field'>
+              <Controller
+                control={control}
+                rules={{
+                  required: true,
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <input
+                    value={value}
+                    onChange={onChange}
+                    type="file"
+                    name="icon"
+                    id="icon"
+                    placeholder="Icon"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  />
+                )}
+                name="file"
+              />
+              {errors.file && (
+                <p className="text-sm text-red-400 indent-2">file is invalid*</p>
+              )}            
+          </div>
+
+          <div className="min-w-[20rem]">
+            <button
+              type="submit"
+              className="w-full text-gray-900 bg-green-400 flex justify-center items-cente selection:cursor-pointer mt-2 mb-4 p-2 rounded-lg"
+            >
+              file submit
+            </button>
+          </div>
+      </form>
+       */}
     </div>
   )
 }

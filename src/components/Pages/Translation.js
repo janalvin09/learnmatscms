@@ -84,7 +84,10 @@ export const Translation = () => {
         </div>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {translationCallback(translations, selected)?.length && translationCallback(translations, selected).map((translation, index) => {
+        {!translationCallback(translations, selected)?.length &&
+          <div>no translation found!</div>
+        }
+        {translationCallback(translations, selected)?.length > 0 && translationCallback(translations, selected).map((translation, index) => {
           return (
             <div
             key={index}
