@@ -29,6 +29,8 @@ import { UpdateQuestionScreen } from "src/components/Screens/crud/update/UpdateQ
 import { UpdateResultScreen } from "src/components/Screens/crud/update/UpdateResultScreen";
 import { UpdateTranslationScreen } from "src/components/Screens/crud/update/UpdateTranslationScreen";
 
+import { ViewResultsScreen } from "src/components/Screens/crud/view/ViewResultScreen";
+
 //  ROUTES PRIVELEGE
 import PrivateRoutes from "./PrivateRoute";
 import LoginRoutes from "./LoginRoute";
@@ -144,7 +146,13 @@ export const routeMaps = [
     path: "/dashboard/translation/:translation",
     element: <UpdateTranslationScreen />,
     name: "UpdateTranslation",
+  },
+  {
+    path: "/dashboard/result/:result",
+    element: <ViewResultsScreen />,
+    name: "ViewResults",
   }
+  
 ];
 
 

@@ -15,6 +15,7 @@ import { DropDown } from "../Partial/Select";
 import _ from "lodash";
 
 
+
 export const Translation = () => {
 
   const { translations } = UseTranslationStore((state) => ({ translations: state.translations }));
@@ -79,7 +80,7 @@ export const Translation = () => {
                 required={false}
                 data={languages}
               />
-            </div>
+          </div>
         </div>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

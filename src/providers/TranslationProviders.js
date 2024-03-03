@@ -53,7 +53,7 @@ export const TranslationProviders = ({ children }) => {
   useQuery({
     queryKey: ["translation"],
     queryFn: () => handleTranslation()
-  })
+  })  
 
   const handleTranslation = useCallback(async () => {
     if(token) {
@@ -64,7 +64,7 @@ export const TranslationProviders = ({ children }) => {
       }
     }
   }, [token, setTranslations])
-  
+
 
   return (
     <TranslationContext.Provider
