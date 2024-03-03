@@ -82,7 +82,10 @@ export const Question = () => {
      
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {questionCallBack(questions, selected)?.length && questionCallBack(questions, selected).map((question, index) => {
+        {!questionCallBack(questions, selected)?.length &&
+          <div>no question found!</div>
+        }
+        {questionCallBack(questions, selected)?.length > 0 && questionCallBack(questions, selected).map((question, index) => {
           return (
             <div
             key={index}

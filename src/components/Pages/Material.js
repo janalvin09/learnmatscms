@@ -83,7 +83,10 @@ export const Material = () => {
 
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {materialCallback(materials, selected)?.length && materialCallback(materials, selected).map((material, index) => {
+      {!materialCallback(materials, selected)?.length &&
+        <div>no material found!</div>
+      }
+      {materialCallback(materials, selected)?.length > 0 && materialCallback(materials, selected).map((material, index) => {
         return (
           <div
           key={index}
