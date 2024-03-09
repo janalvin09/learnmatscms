@@ -8,6 +8,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { BiSolidEdit } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
+import { lineTextFormatter } from "src/utils/helpers";
 import Lottie from 'lottie-react'
 import book from 'src/assets/book.json'
 
@@ -57,7 +58,7 @@ export const ClassLevel = () => {
           className="overflow-hidden transition duration-300 transform bg-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105"
         >
           <div className="p-4 text-white bg-gradient-to-r from-blue-500 to-purple-500 flex justify-between items-center">
-            <h2 className="text-xl font-semibold">{classlevel.name}</h2>
+            <h2 className="text-xl font-semibold">{lineTextFormatter(12, classlevel.name)}</h2>
             <div className="w-[4.5rem] h-[4.5rem]">
               <Lottie animationData={book}/>
             </div>

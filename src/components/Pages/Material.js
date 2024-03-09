@@ -13,6 +13,7 @@ import Lottie from 'lottie-react'
 import book from 'src/assets/book.json'
 import { UtcDateFormatter, encodeURL, is_hasQuestion } from "src/utils/helpers";
 import { DropDown } from "../Partial/Select";
+import { lineTextFormatter } from "src/utils/helpers";
 import _ from "lodash";
 
 export const Material = () => {
@@ -55,7 +56,7 @@ export const Material = () => {
 
   const getClassLevelByMaterial = (classlevel_id) => {
     const classlevel = _.find(classlevels, { id: classlevel_id })
-    return classlevel.name
+    return lineTextFormatter(12, classlevel.name)
   }
 
   
