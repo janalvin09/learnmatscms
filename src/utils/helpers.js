@@ -42,3 +42,11 @@ export const is_hasAnswer = (answers, question_id) => {
 export const is_hasTranslation = (translations, language_id) => {
   return _.findIndex(translations, (translation) => { return translation.language_id === language_id })
 }
+
+export const lineTextFormatter = (maxTextLength, text) => {
+  if(text.length <= maxTextLength) {
+      return text
+  } else {
+      return `${text.substring(0, 13)}...`
+  }
+}

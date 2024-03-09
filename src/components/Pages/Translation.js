@@ -12,6 +12,7 @@ import Lottie from 'lottie-react'
 import book from 'src/assets/book.json'
 import { UtcDateFormatter, encodeURL } from "src/utils/helpers";
 import { DropDown } from "../Partial/Select";
+import { lineTextFormatter } from "src/utils/helpers";
 import _ from "lodash";
 
 
@@ -104,7 +105,7 @@ export const Translation = () => {
                 <span className="font-bold">Language</span> : {getLanguageByTranslation(translation.language_id)}
               </label>
               <label className="text-gray-600 text-base px-4">
-                <span className="font-bold">Translation</span> : {translation.translation}
+                <span className="font-bold">Translation</span> : {lineTextFormatter(12, translation.translation)}
               </label>
               <label className="text-gray-600 text-base px-4">
                 <span className="font-bold">Date</span> : {UtcDateFormatter(translation.createdAt)}

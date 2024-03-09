@@ -12,6 +12,7 @@ import Lottie from 'lottie-react'
 import book from 'src/assets/book.json'
 import { UtcDateFormatter, encodeURL } from "src/utils/helpers";
 import { DropDown } from "../Partial/Select";
+import { lineTextFormatter } from "src/utils/helpers";
 import _ from "lodash";
 
 
@@ -62,7 +63,7 @@ export const Answer = () => {
 
   const getQuestionByAnswer = (question_id) => {
     const question = _.find(questions, { id: question_id })
-    return question.name
+    return lineTextFormatter(12, question.name)
   }
 
 
@@ -100,7 +101,7 @@ export const Answer = () => {
               className="overflow-hidden transition duration-300 transform bg-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105"
             >
               <div className="p-4 text-white bg-gradient-to-r from-blue-500 to-purple-500 flex justify-between items-center">
-                <h2 className="text-xl font-semibold">{answer.name}</h2>
+                <h2 className="text-xl font-semibold">{lineTextFormatter(12, answer.name)}</h2>
                 <div className="w-[4.5rem] h-[4.5rem]">
                   <Lottie animationData={book}/>
                 </div>
