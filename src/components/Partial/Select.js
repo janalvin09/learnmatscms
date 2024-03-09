@@ -1,4 +1,5 @@
 import {FaAngleDown} from 'react-icons/fa'
+import { lineTextFormatter } from 'src/utils/helpers';
 
 export const DropDown = ({
   ariaPlaceHolder,
@@ -32,7 +33,7 @@ export const DropDown = ({
             (item, index) => {
               return (
                 <option key={index} value={item.id}>
-                  {item.name}
+                  {lineTextFormatter(15, item.name)}
                 </option>
               );
             }
