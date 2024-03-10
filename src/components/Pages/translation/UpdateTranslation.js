@@ -76,7 +76,7 @@ export const UpdateTranslation = () => {
                 control={control}
                 rules={{
                   required: true,
-                  pattern: /[\S\s]+[\S]+/
+                  pattern: /^[a-zA-Z0-9]+$/
                 }}
                 render={({ field: { onChange, value } }) => (
                   <input
@@ -101,7 +101,6 @@ export const UpdateTranslation = () => {
                 control={control}
                 rules={{
                   required: true,
-                  pattern: /[\S\s]+[\S]+/
                 }}
                 render={({ field: { onChange, value } }) => (
                   <input

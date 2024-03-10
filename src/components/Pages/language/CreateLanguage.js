@@ -37,7 +37,7 @@ export const CreateLanguage = () => {
               control={control}
               rules={{
                 required: true,
-                pattern: /^[a-zA-Z]{2,}[a-zA-Z\s]*$/,
+                pattern: /^[a-zA-Z0-9]+$/
               }}
               render={({ field: { onChange, value } }) => (
                 <input
@@ -61,7 +61,7 @@ export const CreateLanguage = () => {
                 control={control}
                 rules={{
                   required: true,
-                  pattern: /^[a-zA-Z]{2,}[a-zA-Z\s]*$/,
+                  pattern: /^[a-zA-Z0-9]+$/
                 }}
                 render={({ field: { onChange, value } }) => (
                   <input
