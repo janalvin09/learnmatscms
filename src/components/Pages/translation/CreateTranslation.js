@@ -70,7 +70,7 @@ export const CreateTranslation = () => {
                 control={control}
                 rules={{
                   required: true,
-                  pattern: /^[a-zA-Z0-9]+$/
+                  // pattern: /^[a-zA-Z0-9]+$/
                 }}
                 render={({ field: { onChange, value } }) => (
                   <input
