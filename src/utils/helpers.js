@@ -31,6 +31,10 @@ export const is_hasMaterial = (materials, classlevel_id) => {
   return _.findIndex(materials, (material) => { return material.classlevel_id === classlevel_id })
 }
 
+export const is_CategoryMaterial = (materials, category_id) => {
+  return _.findIndex(materials, (material) => { return material.category_id === category_id })
+}
+
 export const is_hasQuestion = (questions, material_id) => {
   return _.findIndex(questions, (question) => { return question.material_id === material_id })
 }

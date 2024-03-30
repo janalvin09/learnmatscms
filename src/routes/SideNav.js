@@ -22,6 +22,7 @@ export const SideNav = () => {
     const countedRoutes = [
       "Dashboard",
       "Class Level",
+      "Category",
       "Material",
       "Question",
       "Answer",

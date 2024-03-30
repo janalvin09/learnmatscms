@@ -51,7 +51,7 @@ export const CreateQuestion = () => {
     <div className='create-question-main min-h-screen bg-gray-200 w-full flex justify-center items-center'>
       <form 
         onSubmit={handleSubmit(onSubmit)}
-        className='form_container bg-white rounded-lg shadow-xl p-8 flex flex-col gap-4'>
+        className='form_container bg-white rounded-lg shadow-xl w-1/2 p-8 flex flex-col gap-4 mt-4'>
         <h1 className='text-center text-2xl font-bold mb-4'> Create Question: </h1>
 
           <div className='classlevel_field'>
@@ -113,13 +113,13 @@ export const CreateQuestion = () => {
                   // pattern: /^[a-zA-Z0-9]+$/
                 }}
                 render={({ field: { onChange, value } }) => (
-                  <input
+                  <textarea
                     value={value}
                     onChange={onChange}
                     type="text"
                     name="name"
                     id="name"
-                    placeholder="enter a question name"
+                    placeholder="enter a question"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   />
                 )}

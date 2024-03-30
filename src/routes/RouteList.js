@@ -10,9 +10,10 @@ import { AnswerScreen } from "src/components/Screens/AnswerScreen";
 import { ResultScreen } from "src/components/Screens/ResultScreen";
 import { LanguageScreen } from "src/components/Screens/LanguageScreen";
 import { TranslationScreen } from "src/components/Screens/TranslationScreen";
+import { CategoryScreen } from "src/components/Screens/CategoryScreen";
 
 
-// CHILD SCREENS0
+// CHILD SCREENS
 import { CreateClassLevelScreen } from "src/components/Screens/crud/create/CreateClassLevelScreen";
 import { CreateAnswerScreen } from "src/components/Screens/crud/create/CreateAnswerScreen";
 import { CreateLanguageScreen } from "src/components/Screens/crud/create/CreateLanguageScreen";
@@ -20,6 +21,7 @@ import { CreateMaterialScreen } from "src/components/Screens/crud/create/CreateM
 import { CreateQuestionScreen } from "src/components/Screens/crud/create/CreateQuestionScreen";
 import { CreateResultScreen } from "src/components/Screens/crud/create/CreateResultScreen";
 import { CreateTranslationScreen } from "src/components/Screens/crud/create/CreateTranslationScreen";
+import { CreateCategoryScreen } from "src/components/Screens/crud/create/CreateCategoryScreen";
 
 import { UpdateClassLevelScreen } from "src/components/Screens/crud/update/UpdateClassLevelScreen";
 import { UpdateAnswerScreen } from "src/components/Screens/crud/update/UpdateAnswerScreen";
@@ -28,6 +30,7 @@ import { UpdateMaterialScreen } from "src/components/Screens/crud/update/UpdateM
 import { UpdateQuestionScreen } from "src/components/Screens/crud/update/UpdateQuestionScreen";
 import { UpdateResultScreen } from "src/components/Screens/crud/update/UpdateResultScreen";
 import { UpdateTranslationScreen } from "src/components/Screens/crud/update/UpdateTranslationScreen";
+import { UpdateCategoryScreen } from "src/components/Screens/crud/update/UpdateCategoryScreen";
 
 import { ViewResultsScreen } from "src/components/Screens/crud/view/ViewResultScreen";
 
@@ -45,6 +48,11 @@ export const routeMaps = [
     path: "/dashboard/classlevel",
     element: <ClassLevelScreen />,
     name: "Class Level",
+  },
+  {
+    path: "/dashboard/category",
+    element: <CategoryScreen />,
+    name: "Category",
   },
   {
     path: "/dashboard/material",
@@ -111,7 +119,11 @@ export const routeMaps = [
     element: <CreateTranslationScreen />,
     name: "CreateTranslation",
   },
-
+  {
+    path: "/dashboard/category/create",
+    element: <CreateCategoryScreen />,
+    name: "CreateCategory",
+  },
   {
     path: "/dashboard/classlevel/:classlevel",
     element: <UpdateClassLevelScreen />,
@@ -146,6 +158,11 @@ export const routeMaps = [
     path: "/dashboard/translation/:translation",
     element: <UpdateTranslationScreen />,
     name: "UpdateTranslation",
+  },
+  {
+    path: "/dashboard/category/:category",
+    element: <UpdateCategoryScreen />,
+    name: "UpdateCategory",
   },
   {
     path: "/dashboard/result/:result",
