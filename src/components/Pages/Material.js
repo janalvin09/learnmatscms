@@ -4,6 +4,7 @@ import { MaterialContext } from "src/contexts/MaterialContext";
 import { UseMaterialStore } from "src/store/material";
 import { UseClassLevelStore } from "src/store/classlevel";
 import { UseQuestionStore } from "src/store/question";
+import { UseCategoryStore } from "src/store/category";
 import { useUserStore } from "src/store/auth";
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -21,6 +22,7 @@ export const Material = () => {
   const { materials } = UseMaterialStore((state) => ({ materials: state.materials }));
   const { classlevels } = UseClassLevelStore((state) => ({ classlevels: state.classlevels }));
   const { questions } = UseQuestionStore((state) => ({ questions: state.questions }));
+  const { categories } = UseCategoryStore((state) => ({ categories: state.categories }));
   const { token } = useUserStore((state) => ({ token: state.token }));
   const { removeMaterial } = useContext(MaterialContext)
   const [ selected, setSelected ] = useState()
@@ -58,7 +60,10 @@ export const Material = () => {
     const classlevel = _.find(classlevels, { id: classlevel_id })
     return lineTextFormatter(12, classlevel.name)
   }
-
+  const getCategoryByMaterial = (category_id) => {
+    const category = _.find(categories, { id: category_id })
+    return lineTextFormatter(12, category.name)
+  }
   
   return (
     <div className='material_main w-full p-8'>
@@ -102,6 +107,9 @@ export const Material = () => {
           <div className="flex flex-col gap-2">
             <label className="text-gray-600 text-base px-4 mt-4">
               <span className="font-bold">Classlevel</span> : {getClassLevelByMaterial(material.classlevel_id)}
+            </label>
+            <label className="text-gray-600 text-base px-4">
+              <span className="font-bold">Category</span> : {getCategoryByMaterial(material.category_id)}
             </label>
             <label className="text-gray-600 text-base px-4">
               <span className="font-bold">Date</span> : {UtcDateFormatter(material.createdAt)}

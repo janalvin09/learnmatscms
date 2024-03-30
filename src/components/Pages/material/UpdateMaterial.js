@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import { decodeURL } from 'src/utils/helpers'
 import { Controller, useForm } from "react-hook-form";
 import { MaterialContext } from 'src/contexts/MaterialContext';
 import { useUserStore } from 'src/store/auth';
 import { UseClassLevelStore } from 'src/store/classlevel';
+import { UseCategoryStore } from 'src/store/category';
 import { DropDown } from 'src/components/Partial/Select';
+import _ from "lodash";
 
 
 export const UpdateMaterial = () => {
@@ -13,17 +15,22 @@ export const UpdateMaterial = () => {
   const { material } = params
   const { updateMaterial, updateMaterialLoading } = useContext(MaterialContext)
   const { classlevels } = UseClassLevelStore((state) => ({ classlevels: state.classlevels }));
+  const { categories } = UseCategoryStore((state) => ({ categories: state.categories }));
   const { token } = useUserStore((state) => ({ token: state.token }));
 
   const {
     handleSubmit,
     control,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm({
     defaultValues: {
       classlevel_id: decodeURL(material).classlevel_id,
+      category_id: decodeURL(material).category_id,
       name: decodeURL(material).name,
       material_icon: decodeURL(material).material_icon,
+      material_description_title: decodeURL(material).material_description_title,
       material_description: decodeURL(material).material_description,
       material_description_image: decodeURL(material).material_description_image
     },
@@ -31,12 +38,15 @@ export const UpdateMaterial = () => {
 
 
   const onSubmit = (data) => {
+    console.log(data)
     if(token) {
       let payload = {
         material_id: decodeURL(material).id,
         classlevel_id: data.classlevel_id,
+        category_id: data.category_id,
         name: data.name,
         material_icon: data.material_icon,
+        material_description_title: data.material_description_title,
         material_description: data.material_description,
         material_description_image: data.material_description_image,
         user: token
@@ -44,6 +54,15 @@ export const UpdateMaterial = () => {
       updateMaterial(payload)
     }
   }
+
+  const categoryCallback = useCallback((categories, classlevel_id) => {
+    if(classlevel_id) {
+      const newCategories = _.filter(categories, (i) => { return i.classlevel_id === Number(classlevel_id) })
+      return newCategories
+    } else {
+      return categories
+    }
+  }, [])
 
   return (
     <div className='update-material-main min-h-screen bg-gray-200 w-full flex justify-center items-center'>
@@ -63,6 +82,7 @@ export const UpdateMaterial = () => {
                   value={value}
                   onChange={(e) => {
                     onChange(e.target.value);
+                    setValue("category_id", 0)
                   }}
                   className={`h-full w-full border-2 p-2 text-center rounded-lg outline-none appearance-none`}
                   ariaPlaceHolder="Choose class level"
@@ -76,6 +96,32 @@ export const UpdateMaterial = () => {
               <p className="text-sm text-red-400 indent-2">classlevel is invalid*</p>
             )}            
           </div>
+
+          <div className='category_field'>
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={({ field: { onChange, value } }) => (
+                <DropDown
+                  value={value}
+                  onChange={(e) => {
+                    onChange(e.target.value);
+                  }}
+                  className={`h-full w-full border-2 p-2 text-center rounded-lg outline-none appearance-none`}
+                  ariaPlaceHolder="Choose category"
+                  required={true}
+                  data={categoryCallback(categories, watch("classlevel_id"))}
+                />
+              )}
+              name="category_id"
+            />
+            {errors.category_id && (
+              <p className="text-sm text-red-400 indent-2">category is invalid*</p>
+            )}            
+          </div>
+
 
           <div className='name_field'>
               <Controller
@@ -124,6 +170,32 @@ export const UpdateMaterial = () => {
               />
               {errors.material_icon && (
                 <p className="text-sm text-red-400 indent-2">icon is invalid*</p>
+              )}            
+          </div>
+
+
+          <div className='description_title_field'>
+              <Controller
+                control={control}
+                rules={{
+                  required: true,
+                  // pattern: /^[a-zA-Z0-9]+$/
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <input
+                    value={value}
+                    onChange={onChange}
+                    type="text"
+                    name="description_title"
+                    id="description_title"
+                    placeholder="description_title"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  />
+                )}
+                name="material_description_title"
+              />
+              {errors.material_description_title && (
+                <p className="text-sm text-red-400 indent-2">material description title is invalid*</p>
               )}            
           </div>
 
