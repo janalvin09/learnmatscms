@@ -14,6 +14,7 @@ import { AnswerProviders } from "./AnswerProviders"
 import { LanguageProviders } from "./LanguageProviders"
 import { TranslationProviders } from "./TranslationProviders"
 import { ResultProviders } from "./ResultProviders"
+import { CategoryProviders } from "./CategoryProviders"
 import { useUserStore } from "src/store/auth"
 
 export const Providers = () => {
@@ -32,8 +33,10 @@ export const Providers = () => {
                       <LanguageProviders>
                         <TranslationProviders>
                           <ResultProviders>
-                            <NavRoutes />
-                            <ToastContainer />
+                            <CategoryProviders>
+                              <NavRoutes />
+                              <ToastContainer />  
+                            </CategoryProviders>
                           </ResultProviders>      
                         </TranslationProviders>
                       </LanguageProviders>
