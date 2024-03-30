@@ -67,7 +67,7 @@ export const CreateMaterial = () => {
     <div className='create-material-main min-h-screen bg-gray-200 w-full flex gap-2 justify-center items-center'>
       <form 
         onSubmit={handleSubmit(onSubmit)}
-        className='form_container bg-white rounded-lg shadow-xl p-8 flex flex-col gap-4'>
+        className='form_container bg-white rounded-lg shadow-xl w-1/2 p-8 flex flex-col gap-4 mt-4'>
         <h1 className='text-center text-2xl font-bold mb-4'> Create Material: </h1>
 
           <div className='classlevel_field'>
@@ -204,7 +204,7 @@ export const CreateMaterial = () => {
                   // pattern: /^[a-zA-Z0-9]+$/
                 }}
                 render={({ field: { onChange, value } }) => (
-                  <input
+                  <textarea
                     value={value}
                     onChange={onChange}
                     type="text"
