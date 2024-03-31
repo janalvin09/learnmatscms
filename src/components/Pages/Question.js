@@ -86,7 +86,7 @@ export const Question = () => {
         {!questionCallBack(questions, selected)?.length &&
           <div>no question found!</div>
         }
-        {questionCallBack(questions, selected)?.length > 0 && questionCallBack(questions, selected).map((question, index) => {
+        {questionCallBack(questions, selected)?.length > 0 && questionCallBack(questions, selected)?.map((question, index) => {
           return (
             <div
             key={index}
