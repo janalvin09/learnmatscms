@@ -18,8 +18,10 @@ export const GetMaterial = (user) => {
 export const CreateMaterial = (payload) => {
   let params = {
     classlevel_id: Number(payload.classlevel_id),
+    category_id: Number(payload.category_id),
     name: payload.name,
     material_icon: payload.material_icon,
+    material_description_title: payload.material_description_title,
     material_description: payload.material_description,
     material_description_image: payload.material_description_image
   }
@@ -35,8 +37,10 @@ export const CreateMaterial = (payload) => {
 export const UpdateMaterial = (payload) => {
   let params = {
     classlevel_id: Number(payload.classlevel_id),
+    category_id: Number(payload.category_id),
     name: payload.name,
     material_icon: payload.material_icon,
+    material_description_title: payload.material_description_title,
     material_description: payload.material_description,
     material_description_image: payload.material_description_image
   }

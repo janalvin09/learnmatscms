@@ -88,14 +88,14 @@ export const Translation = () => {
         {!translationCallback(translations, selected)?.length &&
           <div>no translation found!</div>
         }
-        {translationCallback(translations, selected)?.length > 0 && translationCallback(translations, selected).map((translation, index) => {
+        {translationCallback(translations, selected)?.length > 0 && translationCallback(translations, selected)?.map((translation, index) => {
           return (
             <div
             key={index}
             className="overflow-hidden transition duration-300 transform bg-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105"
           >
             <div className="p-4 text-white bg-gradient-to-r from-blue-500 to-purple-500 flex justify-between items-center">
-              <h2 className="text-xl font-semibold">{translation.word}</h2>
+              <h2 className="text-xl font-semibold">{lineTextFormatter(12, translation.word)}</h2>
               <div className="w-[4.5rem] h-[4.5rem]">
                 <Lottie animationData={book}/>
               </div>

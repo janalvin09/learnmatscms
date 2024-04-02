@@ -61,7 +61,7 @@ export const Result = () => {
         {!resultCallback(results, selected)?.length &&
           <div>no result found for this student</div>
         }
-        {resultCallback(results, selected)?.length > 0 && resultCallback(results, selected).map((result, index) => {
+        {resultCallback(results, selected)?.length > 0 && resultCallback(results, selected)?.map((result, index) => {
           return (
           <div
             key={index}

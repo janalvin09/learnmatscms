@@ -94,7 +94,7 @@ export const Answer = () => {
           {!answerCallback(answers, selected)?.length &&
             <div>no answer found!</div>
           }
-          {answerCallback(answers, selected)?.length > 0 && answerCallback(answers, selected).map((answer, index) => {
+          {answerCallback(answers, selected)?.length > 0 && answerCallback(answers, selected)?.map((answer, index) => {
             return (
               <div
               key={index}
